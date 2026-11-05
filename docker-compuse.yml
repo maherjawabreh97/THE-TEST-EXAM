@@ -47,3 +47,17 @@ services:
       - ./nginx:/etc/nginx/conf.d
       - certbot_data:/etc/letsencrypt
       - certbot_www:/var/www/certbot
+
+      
+  certbot:
+    image: certbot/certbot
+    container_name: Certbot
+    volumes:
+      - certbot_data:/etc/letsencrypt
+      - certbot_www:/var/www/certbot
+
+volumes:
+  wordpress_data:
+  db_data:
+  certbot_data:
+  certbot_www:

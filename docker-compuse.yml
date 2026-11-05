@@ -5,3 +5,30 @@ services:
     dokerfile: dokerfile
     image:medipol64230022:devops2026
     contaoner_name:medipolapp
+
+    services:
+  wordpress:
+    image: wordpress:fpm-alpine
+    container_name: WordPress
+    restart: always
+    depends_on:
+      - mariadb
+    environment:
+      WORDPRESS_DB_HOST: MariaDB:3306
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: "64230022"
+      WORDPRESS_DB_NAME: wordpress
+    volumes:
+      - wordpress_data:/var/www/html
+
+  mariadb:
+    image: mariadb
+    container_name: MariaDB
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: "64230022"
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: "64230022"
+    volumes:
+      - db_data:/var/lib/mysql

@@ -1,0 +1,7 @@
+services:
+    app:
+    build:
+    context:
+    dokerfile: dokerfile
+    image:medipol64230022:devops2026
+    contaoner_name:medipolapp
